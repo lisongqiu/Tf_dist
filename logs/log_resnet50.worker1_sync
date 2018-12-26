@@ -1,0 +1,296 @@
+nohup: 忽略输入
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcublas.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcudnn.so.5 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcufft.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcurand.so.8.0 locally
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE3 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:885] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:0a:00.0
+Total memory: 10.91GiB
+Free memory: 10.75GiB
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:906] DMA: 0 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:916] 0:   Y 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:975] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:0a:00.0)
+I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:200] Initialize GrpcChannelCache for job ps -> {0 -> localhost:2252}
+I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:200] Initialize GrpcChannelCache for job worker -> {0 -> localhost:2253, 1 -> localhost:2254}
+I tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:221] Started server with target: grpc://localhost:2254
+I tensorflow/core/distributed_runtime/master_session.cc:1012] Start master session c561b1f9aeda8e55 with config: 
+device_filters: "/job:ps"
+device_filters: "/job:worker/task:1"
+allow_soft_placement: true
+
+I tensorflow/core/common_runtime/gpu/pool_allocator.cc:247] PoolAllocator: After 2018 get requests, put_count=1890 evicted_count=1000 eviction_rate=0.529101 and unsatisfied allocation rate=0.608523
+I tensorflow/core/common_runtime/gpu/pool_allocator.cc:259] Raising pool_size_limit_ from 100 to 110
+I tensorflow/core/common_runtime/gpu/pool_allocator.cc:247] PoolAllocator: After 2688 get requests, put_count=2832 evicted_count=1000 eviction_rate=0.353107 and unsatisfied allocation rate=0.327009
+I tensorflow/core/common_runtime/gpu/pool_allocator.cc:259] Raising pool_size_limit_ from 256 to 281
+job name = worker
+task index = 1
+Worker 1: Waiting for session to be initialized...
+Worker 1: Session initialization complete.
+Reading images from ./cifar10-data/cifar-10-batches-py/data_batch_1
+Reading images from ./cifar10-data/cifar-10-batches-py/data_batch_2
+Reading images from ./cifar10-data/cifar-10-batches-py/data_batch_3
+Reading images from ./cifar10-data/cifar-10-batches-py/data_batch_4
+Reading images from ./cifar10-data/cifar-10-batches-py/data_batch_5
+Shuffling
+Reading images from ./cifar10-data/cifar-10-batches-py/test_batch
+Shuffling
+Training begins @ 1545738042.128388
+1545738098.043963: Worker 1: Acc: 0.591859 training step 500 done (global step: 516)
+1545738152.798610: Worker 1: Acc: 0.783656 training step 1000 done (global step: 1016)
+1545738207.706012: Worker 1: Acc: 0.833297 training step 1500 done (global step: 1516)
+1545738265.637319: Worker 1: Acc: 0.856906 training step 2000 done (global step: 2016)
+After 2016 training step(s), prediction accuracy = 0.8363, time cost = 226.420980
+1545738323.627689: Worker 1: Acc: 0.876812 training step 2500 done (global step: 2516)
+1545738378.525164: Worker 1: Acc: 0.887391 training step 3000 done (global step: 3016)
+1545738433.550488: Worker 1: Acc: 0.896828 training step 3500 done (global step: 3516)
+1545738491.419546: Worker 1: Acc: 0.901891 training step 4000 done (global step: 4016)
+After 4016 training step(s), prediction accuracy = 0.8592, time cost = 452.036141
+1545738549.475104: Worker 1: Acc: 0.908891 training step 4500 done (global step: 4516)
+1545738604.587674: Worker 1: Acc: 0.910453 training step 5000 done (global step: 5016)
+1545738660.866638: Worker 1: Acc: 0.913344 training step 5500 done (global step: 5516)
+1545738718.762580: Worker 1: Acc: 0.917141 training step 6000 done (global step: 6016)
+After 6016 training step(s), prediction accuracy = 0.8622, time cost = 679.363183
+1545738776.566416: Worker 1: Acc: 0.921672 training step 6500 done (global step: 6516)
+1545738831.715303: Worker 1: Acc: 0.923188 training step 7000 done (global step: 7016)
+1545738886.796757: Worker 1: Acc: 0.926594 training step 7500 done (global step: 7516)
+1545738944.729146: Worker 1: Acc: 0.925828 training step 8000 done (global step: 8016)
+After 8016 training step(s), prediction accuracy = 0.8764, time cost = 905.363575
+1545739002.717259: Worker 1: Acc: 0.931344 training step 8500 done (global step: 8516)
+1545739057.750673: Worker 1: Acc: 0.930328 training step 9000 done (global step: 9016)
+1545739112.854243: Worker 1: Acc: 0.932016 training step 9500 done (global step: 9516)
+1545739170.836441: Worker 1: Acc: 0.935719 training step 10000 done (global step: 10016)
+After 10016 training step(s), prediction accuracy = 0.8809, time cost = 1131.469337
+1545739228.667055: Worker 1: Acc: 0.933125 training step 10500 done (global step: 10516)
+1545739284.941686: Worker 1: Acc: 0.934094 training step 11000 done (global step: 11016)
+1545739340.080390: Worker 1: Acc: 0.936797 training step 11500 done (global step: 11516)
+1545739397.944310: Worker 1: Acc: 0.937875 training step 12000 done (global step: 12016)
+After 12016 training step(s), prediction accuracy = 0.8859, time cost = 1358.613989
+1545739455.841279: Worker 1: Acc: 0.937453 training step 12500 done (global step: 12516)
+1545739510.768721: Worker 1: Acc: 0.938719 training step 13000 done (global step: 13016)
+1545739565.968461: Worker 1: Acc: 0.938688 training step 13500 done (global step: 13516)
+1545739623.819480: Worker 1: Acc: 0.942688 training step 14000 done (global step: 14016)
+After 14016 training step(s), prediction accuracy = 0.879, time cost = 1584.454881
+1545739681.774190: Worker 1: Acc: 0.940094 training step 14500 done (global step: 14516)
+1545739736.820537: Worker 1: Acc: 0.941281 training step 15000 done (global step: 15016)
+1545739791.774864: Worker 1: Acc: 0.941141 training step 15500 done (global step: 15516)
+1545739850.669404: Worker 1: Acc: 0.944063 training step 16000 done (global step: 16016)
+After 16016 training step(s), prediction accuracy = 0.8876, time cost = 1811.303670
+1545739908.614027: Worker 1: Acc: 0.944094 training step 16500 done (global step: 16516)
+1545739963.770641: Worker 1: Acc: 0.942906 training step 17000 done (global step: 17016)
+1545740019.021186: Worker 1: Acc: 0.944734 training step 17500 done (global step: 17516)
+1545740077.070817: Worker 1: Acc: 0.944187 training step 18000 done (global step: 18016)
+After 18016 training step(s), prediction accuracy = 0.8741, time cost = 2037.721450
+1545740134.962942: Worker 1: Acc: 0.945078 training step 18500 done (global step: 18516)
+1545740190.137619: Worker 1: Acc: 0.945312 training step 19000 done (global step: 19016)
+1545740245.236451: Worker 1: Acc: 0.944641 training step 19500 done (global step: 19516)
+1545740303.153496: Worker 1: Acc: 0.944234 training step 20000 done (global step: 20016)
+After 20016 training step(s), prediction accuracy = 0.8987, time cost = 2263.792273
+1545740361.042575: Worker 1: Acc: 0.979437 training step 20500 done (global step: 20516)
+1545740415.950986: Worker 1: Acc: 0.989 training step 21000 done (global step: 21016)
+1545740472.194328: Worker 1: Acc: 0.992672 training step 21500 done (global step: 21516)
+1545740530.006962: Worker 1: Acc: 0.994547 training step 22000 done (global step: 22016)
+After 22016 training step(s), prediction accuracy = 0.9224, time cost = 2490.623617
+1545740587.948218: Worker 1: Acc: 0.996016 training step 22500 done (global step: 22516)
+1545740643.032933: Worker 1: Acc: 0.997016 training step 23000 done (global step: 23016)
+1545740698.277030: Worker 1: Acc: 0.997375 training step 23500 done (global step: 23516)
+1545740756.248795: Worker 1: Acc: 0.997734 training step 24000 done (global step: 24016)
+After 24016 training step(s), prediction accuracy = 0.9226, time cost = 2716.899420
+1545740814.246937: Worker 1: Acc: 0.998672 training step 24500 done (global step: 24516)
+1545740869.526373: Worker 1: Acc: 0.998766 training step 25000 done (global step: 25016)
+1545740924.636516: Worker 1: Acc: 0.998719 training step 25500 done (global step: 25516)
+1545740982.832972: Worker 1: Acc: 0.998953 training step 26000 done (global step: 26016)
+After 26016 training step(s), prediction accuracy = 0.9247, time cost = 2943.492993
+1545741041.885232: Worker 1: Acc: 0.998969 training step 26500 done (global step: 26516)
+1545741097.322617: Worker 1: Acc: 0.998953 training step 27000 done (global step: 27016)
+1545741152.422457: Worker 1: Acc: 0.999016 training step 27500 done (global step: 27516)
+1545741210.503737: Worker 1: Acc: 0.999 training step 28000 done (global step: 28016)
+After 28016 training step(s), prediction accuracy = 0.9218, time cost = 3171.120425
+1545741268.432034: Worker 1: Acc: 0.999047 training step 28500 done (global step: 28516)
+1545741323.610680: Worker 1: Acc: 0.998922 training step 29000 done (global step: 29016)
+1545741378.761207: Worker 1: Acc: 0.999047 training step 29500 done (global step: 29516)
+1545741436.996452: Worker 1: Acc: 0.999078 training step 30000 done (global step: 30016)
+After 30016 training step(s), prediction accuracy = 0.923, time cost = 3397.631459
+1545741494.985480: Worker 1: Acc: 0.998625 training step 30500 done (global step: 30516)
+1545741550.132386: Worker 1: Acc: 0.998969 training step 31000 done (global step: 31016)
+1545741605.470441: Worker 1: Acc: 0.998906 training step 31500 done (global step: 31516)
+1545741664.842962: Worker 1: Acc: 0.998719 training step 32000 done (global step: 32016)
+After 32016 training step(s), prediction accuracy = 0.9192, time cost = 3625.471179
+1545741722.723586: Worker 1: Acc: 0.998359 training step 32500 done (global step: 32516)
+1545741777.946840: Worker 1: Acc: 0.998062 training step 33000 done (global step: 33016)
+1545741833.102545: Worker 1: Acc: 0.997781 training step 33500 done (global step: 33516)
+1545741891.136689: Worker 1: Acc: 0.998563 training step 34000 done (global step: 34016)
+After 34016 training step(s), prediction accuracy = 0.9172, time cost = 3851.796275
+1545741949.218139: Worker 1: Acc: 0.997 training step 34500 done (global step: 34516)
+1545742004.374154: Worker 1: Acc: 0.996609 training step 35000 done (global step: 35016)
+1545742059.545996: Worker 1: Acc: 0.997328 training step 35500 done (global step: 35516)
+1545742117.478012: Worker 1: Acc: 0.99725 training step 36000 done (global step: 36016)
+After 36016 training step(s), prediction accuracy = 0.9149, time cost = 4078.104192
+1545742175.441123: Worker 1: Acc: 0.996516 training step 36500 done (global step: 36516)
+1545742230.730209: Worker 1: Acc: 0.996156 training step 37000 done (global step: 37016)
+1545742286.704772: Worker 1: Acc: 0.995922 training step 37500 done (global step: 37516)
+1545742344.536811: Worker 1: Acc: 0.996484 training step 38000 done (global step: 38016)
+After 38016 training step(s), prediction accuracy = 0.915, time cost = 4305.189374
+1545742402.489505: Worker 1: Acc: 0.995687 training step 38500 done (global step: 38516)
+1545742457.628537: Worker 1: Acc: 0.995875 training step 39000 done (global step: 39016)
+1545742512.700869: Worker 1: Acc: 0.995594 training step 39500 done (global step: 39516)
+1545742570.505286: Worker 1: Acc: 0.994484 training step 40000 done (global step: 40016)
+After 40016 training step(s), prediction accuracy = 0.9128, time cost = 4531.140273
+1545742628.397226: Worker 1: Acc: 0.997938 training step 40500 done (global step: 40516)
+1545742683.441134: Worker 1: Acc: 0.998922 training step 41000 done (global step: 41016)
+1545742738.378303: Worker 1: Acc: 0.999313 training step 41500 done (global step: 41516)
+1545742796.189570: Worker 1: Acc: 0.999609 training step 42000 done (global step: 42016)
+After 42016 training step(s), prediction accuracy = 0.9222, time cost = 4756.836545
+1545742855.132306: Worker 1: Acc: 0.999656 training step 42500 done (global step: 42516)
+1545742910.028830: Worker 1: Acc: 0.999766 training step 43000 done (global step: 43016)
+1545742965.093599: Worker 1: Acc: 0.999766 training step 43500 done (global step: 43516)
+1545743023.020540: Worker 1: Acc: 0.999812 training step 44000 done (global step: 44016)
+After 44016 training step(s), prediction accuracy = 0.9233, time cost = 4983.652101
+1545743080.943483: Worker 1: Acc: 0.999797 training step 44500 done (global step: 44516)
+1545743136.071559: Worker 1: Acc: 0.999922 training step 45000 done (global step: 45016)
+1545743191.169566: Worker 1: Acc: 0.999828 training step 45500 done (global step: 45516)
+1545743249.158226: Worker 1: Acc: 0.999938 training step 46000 done (global step: 46016)
+After 46016 training step(s), prediction accuracy = 0.9237, time cost = 5209.794779
+1545743307.072832: Worker 1: Acc: 0.999938 training step 46500 done (global step: 46516)
+1545743362.131561: Worker 1: Acc: 0.999953 training step 47000 done (global step: 47016)
+1545743417.322542: Worker 1: Acc: 0.999969 training step 47500 done (global step: 47516)
+1545743476.362288: Worker 1: Acc: 0.999969 training step 48000 done (global step: 48016)
+After 48016 training step(s), prediction accuracy = 0.9239, time cost = 5437.199447
+1545743533.870418: Worker 1: Acc: 0.999969 training step 48500 done (global step: 48516)
+1545743588.373310: Worker 1: Acc: 0.999953 training step 49000 done (global step: 49016)
+1545743642.892263: Worker 1: Acc: 0.999969 training step 49500 done (global step: 49516)
+1545743700.890007: Worker 1: Acc: 0.999984 training step 50000 done (global step: 50016)
+After 50016 training step(s), prediction accuracy = 0.9238, time cost = 5661.761982
+1545743758.470848: Worker 1: Acc: 0.999922 training step 50500 done (global step: 50516)
+1545743813.154175: Worker 1: Acc: 0.999969 training step 51000 done (global step: 51016)
+1545743867.809672: Worker 1: Acc: 0.999969 training step 51500 done (global step: 51516)
+1545743925.275730: Worker 1: Acc: 0.999953 training step 52000 done (global step: 52016)
+After 52016 training step(s), prediction accuracy = 0.9238, time cost = 5886.153705
+1545743983.164369: Worker 1: Acc: 0.999969 training step 52500 done (global step: 52516)
+1545744039.097971: Worker 1: Acc: 0.999984 training step 53000 done (global step: 53016)
+1545744093.661548: Worker 1: Acc: 0.999984 training step 53500 done (global step: 53516)
+1545744151.458110: Worker 1: Acc: 0.999984 training step 54000 done (global step: 54016)
+After 54016 training step(s), prediction accuracy = 0.9237, time cost = 6112.310845
+1545744208.991964: Worker 1: Acc: 0.999953 training step 54500 done (global step: 54516)
+1545744263.641961: Worker 1: Acc: 0.999984 training step 55000 done (global step: 55016)
+1545744318.593452: Worker 1: Acc: 0.999984 training step 55500 done (global step: 55516)
+1545744376.623491: Worker 1: Acc: 1 training step 56000 done (global step: 56016)
+After 56016 training step(s), prediction accuracy = 0.9232, time cost = 6337.514842
+1545744434.227742: Worker 1: Acc: 1 training step 56500 done (global step: 56516)
+1545744488.873632: Worker 1: Acc: 0.999984 training step 57000 done (global step: 57016)
+1545744543.567752: Worker 1: Acc: 0.999984 training step 57500 done (global step: 57516)
+1545744601.399575: Worker 1: Acc: 0.999984 training step 58000 done (global step: 58016)
+After 58016 training step(s), prediction accuracy = 0.9239, time cost = 6562.191265
+1545744659.967211: Worker 1: Acc: 1 training step 58500 done (global step: 58516)
+1545744714.560315: Worker 1: Acc: 1 training step 59000 done (global step: 59016)
+1545744769.545422: Worker 1: Acc: 1 training step 59500 done (global step: 59516)
+1545744827.493607: Worker 1: Acc: 1 training step 60000 done (global step: 60016)
+After 60016 training step(s), prediction accuracy = 0.9239, time cost = 6788.378598
+1545744885.195357: Worker 1: Acc: 1 training step 60500 done (global step: 60516)
+1545744939.797543: Worker 1: Acc: 0.999984 training step 61000 done (global step: 61016)
+1545744994.352277: Worker 1: Acc: 0.999984 training step 61500 done (global step: 61516)
+1545745052.237311: Worker 1: Acc: 0.999969 training step 62000 done (global step: 62016)
+After 62016 training step(s), prediction accuracy = 0.9239, time cost = 7013.148226
+1545745109.986099: Worker 1: Acc: 0.999969 training step 62500 done (global step: 62516)
+1545745164.684135: Worker 1: Acc: 0.999984 training step 63000 done (global step: 63016)
+1545745219.277487: Worker 1: Acc: 0.999953 training step 63500 done (global step: 63516)
+1545745278.519403: Worker 1: Acc: 1 training step 64000 done (global step: 64016)
+After 64016 training step(s), prediction accuracy = 0.9245, time cost = 7239.192785
+1545745336.543406: Worker 1: Acc: 1 training step 64500 done (global step: 64516)
+1545745391.764311: Worker 1: Acc: 1 training step 65000 done (global step: 65016)
+1545745446.927695: Worker 1: Acc: 1 training step 65500 done (global step: 65516)
+1545745504.994089: Worker 1: Acc: 1 training step 66000 done (global step: 66016)
+After 66016 training step(s), prediction accuracy = 0.9244, time cost = 7465.677806
+1545745562.859680: Worker 1: Acc: 1 training step 66500 done (global step: 66516)
+1545745617.980222: Worker 1: Acc: 1 training step 67000 done (global step: 67016)
+1545745673.160034: Worker 1: Acc: 0.999984 training step 67500 done (global step: 67516)
+1545745731.244626: Worker 1: Acc: 1 training step 68000 done (global step: 68016)
+After 68016 training step(s), prediction accuracy = 0.9244, time cost = 7691.897692
+1545745789.105703: Worker 1: Acc: 0.999984 training step 68500 done (global step: 68516)
+1545745845.325057: Worker 1: Acc: 0.999984 training step 69000 done (global step: 69016)
+1545745900.502569: Worker 1: Acc: 1 training step 69500 done (global step: 69516)
+1545745958.603198: Worker 1: Acc: 1 training step 70000 done (global step: 70016)
+After 70016 training step(s), prediction accuracy = 0.9244, time cost = 7919.283862
+1545746016.745333: Worker 1: Acc: 1 training step 70500 done (global step: 70516)
+1545746072.050980: Worker 1: Acc: 0.999984 training step 71000 done (global step: 71016)
+1545746127.224490: Worker 1: Acc: 1 training step 71500 done (global step: 71516)
+1545746185.246527: Worker 1: Acc: 1 training step 72000 done (global step: 72016)
+After 72016 training step(s), prediction accuracy = 0.9241, time cost = 8145.910812
+1545746243.275936: Worker 1: Acc: 1 training step 72500 done (global step: 72516)
+1545746298.569363: Worker 1: Acc: 0.999984 training step 73000 done (global step: 73016)
+1545746353.888501: Worker 1: Acc: 0.999984 training step 73500 done (global step: 73516)
+1545746411.891814: Worker 1: Acc: 1 training step 74000 done (global step: 74016)
+After 74016 training step(s), prediction accuracy = 0.9241, time cost = 8372.553764
+1545746471.002067: Worker 1: Acc: 0.999984 training step 74500 done (global step: 74516)
+1545746526.168752: Worker 1: Acc: 0.999984 training step 75000 done (global step: 75016)
+1545746581.406504: Worker 1: Acc: 1 training step 75500 done (global step: 75516)
+1545746639.454957: Worker 1: Acc: 1 training step 76000 done (global step: 76016)
+After 76016 training step(s), prediction accuracy = 0.924, time cost = 8600.106618
+1545746697.445043: Worker 1: Acc: 1 training step 76500 done (global step: 76516)
+1545746752.667408: Worker 1: Acc: 1 training step 77000 done (global step: 77016)
+1545746807.993898: Worker 1: Acc: 1 training step 77500 done (global step: 77516)
+1545746866.031279: Worker 1: Acc: 1 training step 78000 done (global step: 78016)
+After 78016 training step(s), prediction accuracy = 0.9242, time cost = 8826.686570
+1545746924.062376: Worker 1: Acc: 1 training step 78500 done (global step: 78516)
+1545746979.384761: Worker 1: Acc: 1 training step 79000 done (global step: 79016)
+1545747035.778322: Worker 1: Acc: 1 training step 79500 done (global step: 79516)
+1545747093.845505: Worker 1: Acc: 0.999984 training step 80000 done (global step: 80016)
+After 80016 training step(s), prediction accuracy = 0.9242, time cost = 9054.538146
+1545747151.833145: Worker 1: Acc: 0.999984 training step 80500 done (global step: 80516)
+1545747207.128822: Worker 1: Acc: 1 training step 81000 done (global step: 81016)
+1545747262.422189: Worker 1: Acc: 0.999984 training step 81500 done (global step: 81516)
+1545747320.446130: Worker 1: Acc: 1 training step 82000 done (global step: 82016)
+After 82016 training step(s), prediction accuracy = 0.9242, time cost = 9281.129664
+1545747378.433841: Worker 1: Acc: 1 training step 82500 done (global step: 82516)
+1545747433.597222: Worker 1: Acc: 0.999984 training step 83000 done (global step: 83016)
+1545747488.778762: Worker 1: Acc: 0.999953 training step 83500 done (global step: 83516)
+1545747546.879957: Worker 1: Acc: 0.999984 training step 84000 done (global step: 84016)
+After 84016 training step(s), prediction accuracy = 0.9242, time cost = 9507.577641
+1545747604.902290: Worker 1: Acc: 1 training step 84500 done (global step: 84516)
+1545747661.214652: Worker 1: Acc: 1 training step 85000 done (global step: 85016)
+1545747716.499329: Worker 1: Acc: 1 training step 85500 done (global step: 85516)
+1545747774.584293: Worker 1: Acc: 1 training step 86000 done (global step: 86016)
+After 86016 training step(s), prediction accuracy = 0.9242, time cost = 9735.234013
+1545747832.673039: Worker 1: Acc: 1 training step 86500 done (global step: 86516)
+1545747887.888613: Worker 1: Acc: 1 training step 87000 done (global step: 87016)
+1545747943.050359: Worker 1: Acc: 1 training step 87500 done (global step: 87516)
+1545748001.066200: Worker 1: Acc: 1 training step 88000 done (global step: 88016)
+After 88016 training step(s), prediction accuracy = 0.9242, time cost = 9961.706541
+1545748059.013252: Worker 1: Acc: 1 training step 88500 done (global step: 88516)
+1545748114.098408: Worker 1: Acc: 1 training step 89000 done (global step: 89016)
+1545748169.318007: Worker 1: Acc: 0.999984 training step 89500 done (global step: 89516)
+1545748227.334477: Worker 1: Acc: 0.999984 training step 90000 done (global step: 90016)
+After 90016 training step(s), prediction accuracy = 0.9242, time cost = 10187.993138
+1545748286.402997: Worker 1: Acc: 1 training step 90500 done (global step: 90516)
+1545748341.512448: Worker 1: Acc: 1 training step 91000 done (global step: 91016)
+1545748396.584763: Worker 1: Acc: 0.999984 training step 91500 done (global step: 91516)
+1545748454.680448: Worker 1: Acc: 0.999984 training step 92000 done (global step: 92016)
+After 92016 training step(s), prediction accuracy = 0.9242, time cost = 10415.333456
+1545748512.626198: Worker 1: Acc: 1 training step 92500 done (global step: 92516)
+1545748567.852181: Worker 1: Acc: 0.999969 training step 93000 done (global step: 93016)
+1545748623.083444: Worker 1: Acc: 1 training step 93500 done (global step: 93516)
+1545748681.151088: Worker 1: Acc: 1 training step 94000 done (global step: 94016)
+After 94016 training step(s), prediction accuracy = 0.9242, time cost = 10641.812702
+1545748739.059959: Worker 1: Acc: 1 training step 94500 done (global step: 94516)
+1545748794.175348: Worker 1: Acc: 0.999984 training step 95000 done (global step: 95016)
+1545748850.268861: Worker 1: Acc: 1 training step 95500 done (global step: 95516)
+1545748908.372602: Worker 1: Acc: 1 training step 96000 done (global step: 96016)
+After 96016 training step(s), prediction accuracy = 0.9242, time cost = 10869.045577
+1545748966.424008: Worker 1: Acc: 0.999984 training step 96500 done (global step: 96516)
+1545749021.630627: Worker 1: Acc: 1 training step 97000 done (global step: 97016)
+1545749076.795584: Worker 1: Acc: 1 training step 97500 done (global step: 97516)
+1545749134.710688: Worker 1: Acc: 0.999984 training step 98000 done (global step: 98016)
+After 98016 training step(s), prediction accuracy = 0.9242, time cost = 11095.364969
+1545749192.570776: Worker 1: Acc: 0.999984 training step 98500 done (global step: 98516)
+1545749247.689192: Worker 1: Acc: 0.999984 training step 99000 done (global step: 99016)
+1545749302.922309: Worker 1: Acc: 0.999984 training step 99500 done (global step: 99516)
+Training ends @ 1545749359.209440
+Training elapsed time: 11317.081052 s

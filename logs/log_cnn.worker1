@@ -1,0 +1,117 @@
+nohup: 忽略输入
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcublas.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcudnn.so.5 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcufft.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcurand.so.8.0 locally
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE3 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:885] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:0a:00.0
+Total memory: 10.91GiB
+Free memory: 10.75GiB
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:906] DMA: 0 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:916] 0:   Y 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:975] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:0a:00.0)
+I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:200] Initialize GrpcChannelCache for job ps -> {0 -> localhost:2232}
+I tensorflow/core/distributed_runtime/rpc/grpc_channel.cc:200] Initialize GrpcChannelCache for job worker -> {0 -> localhost:2233, 1 -> localhost:2234}
+I tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc:221] Started server with target: grpc://localhost:2234
+I tensorflow/core/distributed_runtime/master_session.cc:1012] Start master session b1b5973959e64264 with config: 
+device_filters: "/job:ps"
+device_filters: "/job:worker/task:1"
+allow_soft_placement: true
+
+job name = worker
+task index = 1
+Worker 1: Waiting for session to be initialized...
+Worker 1: Session initialization complete.
+Reading images from ./cifar10-data/cifar-10-batches-py/data_batch_1
+Reading images from ./cifar10-data/cifar-10-batches-py/data_batch_2
+Reading images from ./cifar10-data/cifar-10-batches-py/data_batch_3
+Reading images from ./cifar10-data/cifar-10-batches-py/data_batch_4
+Reading images from ./cifar10-data/cifar-10-batches-py/data_batch_5
+Shuffling
+Reading images from ./cifar10-data/cifar-10-batches-py/test_batch
+Shuffling
+Training begins @ 1545734073.015621
+1545734093.015550: Worker 1: Acc: 0.515938 training step 500 done (global step: 1218)
+1545734112.971714: Worker 1: Acc: 0.666719 training step 1000 done (global step: 2220)
+1545734133.311258: Worker 1: Acc: 0.73075 training step 1500 done (global step: 3221)
+1545734153.368089: Worker 1: Acc: 0.77525 training step 2000 done (global step: 4193)
+After 4193 training step(s), prediction accuracy = 0.7575, time cost = 81.408598
+1545734174.798038: Worker 1: Acc: 0.798281 training step 2500 done (global step: 5225)
+1545734195.179700: Worker 1: Acc: 0.815469 training step 3000 done (global step: 6227)
+1545734215.388715: Worker 1: Acc: 0.832187 training step 3500 done (global step: 7228)
+1545734235.348579: Worker 1: Acc: 0.843266 training step 4000 done (global step: 8199)
+After 8199 training step(s), prediction accuracy = 0.7794, time cost = 163.382961
+1545734256.775805: Worker 1: Acc: 0.850281 training step 4500 done (global step: 9226)
+1545734277.130610: Worker 1: Acc: 0.856625 training step 5000 done (global step: 10227)
+1545734297.311476: Worker 1: Acc: 0.867203 training step 5500 done (global step: 11229)
+1545734317.998361: Worker 1: Acc: 0.870687 training step 6000 done (global step: 12200)
+After 12200 training step(s), prediction accuracy = 0.795, time cost = 246.077863
+1545734339.722516: Worker 1: Acc: 0.872672 training step 6500 done (global step: 13231)
+1545734360.219965: Worker 1: Acc: 0.878687 training step 7000 done (global step: 14232)
+1545734380.469831: Worker 1: Acc: 0.88475 training step 7500 done (global step: 15237)
+1545734400.658361: Worker 1: Acc: 0.886781 training step 8000 done (global step: 16209)
+After 16209 training step(s), prediction accuracy = 0.7996, time cost = 328.724429
+1545734422.290799: Worker 1: Acc: 0.889172 training step 8500 done (global step: 17240)
+1545734442.879470: Worker 1: Acc: 0.888234 training step 9000 done (global step: 18241)
+1545734463.425072: Worker 1: Acc: 0.893938 training step 9500 done (global step: 19243)
+1545734483.713142: Worker 1: Acc: 0.903094 training step 10000 done (global step: 20218)
+After 20218 training step(s), prediction accuracy = 0.8227, time cost = 411.777270
+1545734505.348989: Worker 1: Acc: 0.949984 training step 10500 done (global step: 21252)
+1545734525.834606: Worker 1: Acc: 0.964 training step 11000 done (global step: 22255)
+1545734546.054865: Worker 1: Acc: 0.971297 training step 11500 done (global step: 23256)
+1545734566.167728: Worker 1: Acc: 0.977844 training step 12000 done (global step: 24229)
+After 24229 training step(s), prediction accuracy = 0.8385, time cost = 494.231940
+1545734587.537819: Worker 1: Acc: 0.981563 training step 12500 done (global step: 25262)
+1545734608.025976: Worker 1: Acc: 0.984781 training step 13000 done (global step: 26266)
+1545734628.735316: Worker 1: Acc: 0.987547 training step 13500 done (global step: 27269)
+1545734648.811522: Worker 1: Acc: 0.989047 training step 14000 done (global step: 28244)
+After 28244 training step(s), prediction accuracy = 0.8399, time cost = 576.860245
+1545734670.217636: Worker 1: Acc: 0.990109 training step 14500 done (global step: 29275)
+1545734690.476421: Worker 1: Acc: 0.991891 training step 15000 done (global step: 30275)
+1545734710.847035: Worker 1: Acc: 0.992344 training step 15500 done (global step: 31280)
+1545734731.250375: Worker 1: Acc: 0.993125 training step 16000 done (global step: 32253)
+After 32253 training step(s), prediction accuracy = 0.8425, time cost = 659.305402
+1545734752.947001: Worker 1: Acc: 0.993828 training step 16500 done (global step: 33282)
+1545734773.097980: Worker 1: Acc: 0.99475 training step 17000 done (global step: 34287)
+1545734793.682281: Worker 1: Acc: 0.994859 training step 17500 done (global step: 35289)
+1545734813.770554: Worker 1: Acc: 0.994922 training step 18000 done (global step: 36258)
+After 36258 training step(s), prediction accuracy = 0.8435, time cost = 741.817382
+1545734835.081783: Worker 1: Acc: 0.995516 training step 18500 done (global step: 37289)
+1545734855.602537: Worker 1: Acc: 0.995625 training step 19000 done (global step: 38290)
+1545734875.699248: Worker 1: Acc: 0.995859 training step 19500 done (global step: 39294)
+1545734895.840106: Worker 1: Acc: 0.996016 training step 20000 done (global step: 40267)
+After 40267 training step(s), prediction accuracy = 0.8467, time cost = 823.914818
+1545734917.271323: Worker 1: Acc: 0.997516 training step 20500 done (global step: 41298)
+1545734937.322667: Worker 1: Acc: 0.997672 training step 21000 done (global step: 42302)
+1545734957.734285: Worker 1: Acc: 0.998234 training step 21500 done (global step: 43305)
+1545734978.023238: Worker 1: Acc: 0.997969 training step 22000 done (global step: 44278)
+After 44278 training step(s), prediction accuracy = 0.8478, time cost = 906.107912
+1545734999.321884: Worker 1: Acc: 0.998781 training step 22500 done (global step: 45310)
+1545735019.676367: Worker 1: Acc: 0.998375 training step 23000 done (global step: 46311)
+1545735039.966204: Worker 1: Acc: 0.998984 training step 23500 done (global step: 47312)
+1545735059.863328: Worker 1: Acc: 0.998969 training step 24000 done (global step: 48285)
+After 48285 training step(s), prediction accuracy = 0.8478, time cost = 987.948841
+1545735081.559281: Worker 1: Acc: 0.998953 training step 24500 done (global step: 49317)
+1545735101.968048: Worker 1: Acc: 0.998969 training step 25000 done (global step: 50316)
+1545735122.054120: Worker 1: Acc: 0.999125 training step 25500 done (global step: 51316)
+1545735142.529037: Worker 1: Acc: 0.999172 training step 26000 done (global step: 52289)
+After 52289 training step(s), prediction accuracy = 0.8488, time cost = 1070.599637
+1545735163.951390: Worker 1: Acc: 0.999344 training step 26500 done (global step: 53318)
+1545735183.987589: Worker 1: Acc: 0.999406 training step 27000 done (global step: 54318)
+1545735204.455213: Worker 1: Acc: 0.999359 training step 27500 done (global step: 55317)
+1545735224.866419: Worker 1: Acc: 0.999313 training step 28000 done (global step: 56292)
+After 56292 training step(s), prediction accuracy = 0.8478, time cost = 1152.932342
+1545735246.249072: Worker 1: Acc: 0.999281 training step 28500 done (global step: 57323)
+1545735266.452005: Worker 1: Acc: 0.999469 training step 29000 done (global step: 58322)
+1545735286.826379: Worker 1: Acc: 0.999437 training step 29500 done (global step: 59323)
+Training ends @ 1545735300.944831
+Training elapsed time: 1227.929210 s

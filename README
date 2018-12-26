@@ -1,0 +1,33 @@
+文件说明：
+cifar10.py：主程序（可调参）；
+cifar10_fix.py：模型参数固定；
+cifar10_input.py：数据读取&预处理；
+mlp.py, cnn.py, resnet.py：各个模型的实现。
+logs文件夹下有一些之前cnn和resnet训练的log信息。
+
+
+实验环境： 见requirements.txt
+
+
+运行命令：
+CUDA_VISIBLE_DEVICES="" python cifar10_fix.py --job_name=ps --task_index=0 --model=resnet（运行parameter server)
+CUDA_VISIBLE_DEVICES="0" python cifar10_fix.py --job_name=worker --task_index=0 --model=resnet (运行worker0)
+CUDA_VISIBLE_DEVICES="1" python cifar10_fix.py --job_name=worker --task_index=1 --model=resnet (运行worker1)
+
+
+调参结果：
+Resnet:
+resnet-17: momentum, lr=0.1, decay_rate=0.2, decay_step=20000. (90.64%)
+resnet-50, momentum, lr=0.2, decay_rate=0.1, decay_step=20000. (92.16%-async, 92.67%-sync)
+
+CNN:
+gd, lr=0.1, decay_rate=0.1, decay_step=20000. (84.88%-async, 84.69%-sync)
+
+MLP:
+adam, lr=0.001, decay_step=20000. (58.26%)
+
+
+固定参数（cifar10_fix.py）中：
+reset: resnet-110, learning_rate=0.1, optim="momentum"
+cnn: learning_rate=0.01, optim="adam"
+mlp: learning_rate=0.01, optim="adam"
