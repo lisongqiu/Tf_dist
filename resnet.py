@@ -202,3 +202,15 @@ def resnet_loss(logits, labels):
     total_loss = tf.add_n([cross_entropy_mean] + regu_losses)
 
     return total_loss
+
+
+def resnet_tower_loss(logits, labels, scope):
+    cross_entropy = tf.nn.sparse_softmax_cross_entropy_with_logits(
+        labels=labels, logits=logits, name='cross_entropy_per_example')
+    cross_entropy_mean = tf.reduce_mean(cross_entropy, name='cross_entropy')
+
+    regu_losses = tf.get_collection(tf.GraphKeys.REGULARIZATION_LOSSES, scope=scope)
+
+    total_loss = tf.add_n([cross_entropy_mean] + regu_losses, name='total_loss')
+
+    return total_loss

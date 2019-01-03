@@ -137,3 +137,15 @@ def cnn_loss(logits, labels):
     cross_entropy_mean = tf.reduce_mean(cross_entropy, name='cross_entropy')
     tf.add_to_collection('losses', cross_entropy_mean)
     return tf.add_n(tf.get_collection('losses'), name='total_loss')
+
+
+def cnn_tower_loss(logits, labels, scope):
+    _ = cnn_loss(logits, labels)
+
+    # Assemble all of the losses for the current tower only.
+    losses = tf.get_collection('losses', scope)
+
+    # Calculate the total loss for the current tower.
+    total_loss = tf.add_n(losses, name='total_loss')
+
+    return total_loss
