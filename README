@@ -1,8 +1,10 @@
 文件说明：
-cifar10.py：主程序（可调参）；
-cifar10_fix.py：模型参数固定；
-cifar10_input.py：数据读取&预处理；
-mlp.py, cnn.py, resnet.py：各个模型的实现。
+cifar10.py： 主程序（可调参）；
+cifar10_fix.py： 模型参数固定；
+cifar10_input.py： 数据读取&预处理；
+cifar10_singleGPU.py: 支持CPU/single GPU without distribution;
+cifar10_multiGPU.py: 支持multi GPU without distribution;
+mlp.py, cnn.py, resnet.py： 各个模型的实现。
 logs文件夹下有一些之前cnn和resnet训练的log信息。
 
 
