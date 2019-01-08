@@ -33,21 +33,15 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import os
 import math
 import sys
-import time
 import tempfile
+import time
 
-from six.moves import urllib
-
-import numpy as np
 import tensorflow as tf
+from tensorflow.examples.tutorials.mnist import input_data
 
-import cifar10_input
 from cifar10_input import *
-from resnet import resnet, resnet_loss
-from cnn import cnn, cnn_loss
 from mlp import mlp, mlp_loss
 
 
@@ -61,31 +55,31 @@ flags.DEFINE_integer("task_index", None,
                      "Worker task index, should be >= 0. task_index=0 is "
                      "the master worker task the performs the variable "
                      "initialization ")
-flags.DEFINE_integer("num_gpus", 2, "Total number of gpus for each machine."
+flags.DEFINE_integer("num_gpus", 1, "Total number of gpus for each machine."
                                     "If you don't use GPU, please set it to '0'")
 flags.DEFINE_integer("replicas_to_aggregate", None,
                      "Number of replicas to aggregate before parameter update "
                      "is applied (For sync_replicas mode only; default: "
                      "num_workers)")
-flags.DEFINE_integer("train_steps", int(5*50000/256),
+flags.DEFINE_integer("train_steps", 60000,
                      "Number of (global) training steps to perform")
-flags.DEFINE_integer("log_interval", int(50000 / 256)/2,
+flags.DEFINE_integer("log_interval", 50,
                      "Interval number of (local) training steps to log")
-flags.DEFINE_integer("test_interval", int(50000 / 256),
+flags.DEFINE_integer("test_interval", 500,
                      "Number of (local) training steps to perform testing.")
 flags.DEFINE_string("model", "resnet",
                     "model name, candidate list: [resnet, cnn, mlp].")
-flags.DEFINE_integer("batch_size", 256, "Training batch size")
+flags.DEFINE_integer("batch_size", 128, "Training batch size")
 flags.DEFINE_float("learning_rate", 0.1, "Learning rate")
-flags.DEFINE_integer("num_blocks", 18,
+flags.DEFINE_integer("num_blocks", 5,
                      "Number of blocks of networks.")
-tf.app.flags.DEFINE_float('lr_decay_factor', 0.1, '''How much to decay the learning rate each
+tf.app.flags.DEFINE_float('lr_decay_factor', 0.2, '''How much to decay the learning rate each
                            time''')
-tf.app.flags.DEFINE_integer('decay_step', 20000, '''At which step to decay the learning rate''')
-tf.app.flags.DEFINE_string('optim', 'momentum',
-                           'Optimizer to be used, candidate list: [adam, momentum, gd]')
+tf.app.flags.DEFINE_integer('decay_step0', 20000, '''At which step to decay the learning rate''')
+tf.app.flags.DEFINE_integer('decay_step1', 40000, '''At which step to decay the learning rate''')
+
 flags.DEFINE_boolean(
-    "sync_replicas", False,
+    "sync_replicas", True,
     "Use the sync_replicas (synchronized replicas) mode, "
     "wherein the parameter updates from workers are aggregated "
     "before applied to avoid stale gradients")
@@ -94,9 +88,9 @@ flags.DEFINE_boolean(
                                "will use the worker hosts via their GRPC URLs (one client process "
                                "per worker host). Otherwise, will create an in-process TensorFlow "
                                "server.")
-flags.DEFINE_string("ps_hosts", "172.31.222.87:3261",
+flags.DEFINE_string("ps_hosts", "localhost:2222",
                     "Comma-separated list of hostname:port pairs")
-flags.DEFINE_string("worker_hosts", "172.31.222.87:3262,172.31.200.141:3263",
+flags.DEFINE_string("worker_hosts", "localhost:2223,localhost:2224",
                     "Comma-separated list of hostname:port pairs")
 flags.DEFINE_string("job_name", None, "job name: worker or ps")
 
@@ -108,22 +102,7 @@ def main(unused_argv):
     if FLAGS.download_only:
         sys.exit(0)
 
-    # Check model.
-    if FLAGS.model == "resnet":
-        inference, loss = resnet, resnet_loss
-        FLAGS.learning_rate = 0.1
-        FLAGS.optim = "momentum"
-        FLAGS.num_blocks = 18
-    elif FLAGS.model == "cnn":
-        inference, loss = cnn, cnn_loss
-        FLAGS.learning_rate = 0.1
-        FLAGS.optim = "gd"
-    elif FLAGS.model == "mlp":
-        inference, loss = mlp, mlp_loss
-        FLAGS.learning_rate = 0.1
-        FLAGS.optim = "gd"
-    else:
-        assert "Model Type Error !"
+    inference, loss = mlp, mlp_loss
 
     if FLAGS.job_name is None or FLAGS.job_name == "":
         raise ValueError("Must specify an explicit `job_name`")
@@ -170,37 +149,15 @@ def main(unused_argv):
         global_step = tf.Variable(0, name="global_step", trainable=False)
 
         # Ops: located on the worker specified with FLAGS.task_index
-        x = tf.placeholder(tf.float32, [None, IMG_WIDTH, IMG_HEIGHT, IMG_DEPTH])
-        y_ = tf.placeholder(tf.int64, [None])
-        lr_placeholder = tf.placeholder(tf.float32)
-        # batch_size_ = tf.placeholder(tf.int64, name="batch_size_")
+        x = tf.placeholder(tf.float32, [None, IMAGE_PIXELS * IMAGE_PIXELS])
+        y_ = tf.placeholder(tf.float32, [None, 10])
 
-        logits = inference(x, FLAGS.num_blocks)
+        logits = mlp(x)
 
-        y = tf.nn.softmax(logits)
+        labels = tf.argmax(y_, 1)
+        cross_entropy = mlp_loss(logits, labels)
 
-        labels = tf.cast(y_, tf.int64)
-
-        total_loss = loss(logits, labels)
-
-        correct_prediction = tf.equal(tf.arg_max(y, 1), labels)
-        accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
-
-        learning_rate = tf.train.exponential_decay(
-            FLAGS.learning_rate,
-            global_step,
-            FLAGS.decay_step,
-            FLAGS.lr_decay_factor,
-            staircase=True)
-
-        if FLAGS.optim == 'momentum':
-            opt = tf.train.MomentumOptimizer(learning_rate=learning_rate, momentum=0.9)
-        elif FLAGS.optim == 'adam':
-            opt = tf.train.AdamOptimizer(learning_rate)
-        elif FLAGS.optim == 'gd':
-            opt = tf.train.GradientDescentOptimizer(learning_rate)
-        else:
-            assert "Optimizer Type Error !"
+        opt = tf.train.AdamOptimizer(FLAGS.learning_rate)
 
         if FLAGS.sync_replicas:
             if FLAGS.replicas_to_aggregate is None:
@@ -214,7 +171,7 @@ def main(unused_argv):
                 total_num_replicas=num_workers,
                 name="mnist_sync_replicas")
 
-        train_step = opt.minimize(total_loss, global_step=global_step)
+        train_step = opt.minimize(cross_entropy, global_step=global_step)
 
         if FLAGS.sync_replicas:
             local_init_op = opt.local_step_init_op
@@ -276,74 +233,36 @@ def main(unused_argv):
             sess.run(sync_init_op)
             sv.start_queue_runners(sess, [chief_queue_runner])
 
-        # Load Data
-        all_data, all_labels = prepare_train_data(FLAGS.data_dir)
-        valid_data, valid_labels = read_validation_data(FLAGS.data_dir)
-
         # Perform training
         time_begin = time.time()
         print("Training begins @ %f" % time_begin)
 
-        def valid(local_step):
-            batch_size = FLAGS.batch_size
-            n_test = valid_data.shape[0]
-
-            # Validation test
-            current_step = 0
-            cumulated_acc = 0.0
-            while current_step * batch_size < n_test:
-                current_num = min(batch_size, n_test - current_step * batch_size)
-                batch_x = valid_data[current_step * batch_size:current_step * batch_size + current_num, :, :, :]
-                batch_y = valid_labels[current_step * batch_size:current_step * batch_size + current_num]
-                valid_feed = {x: batch_x, y_: batch_y, lr_placeholder: FLAGS.learning_rate}
-
-                acc = sess.run([accuracy], feed_dict=valid_feed)
-                cumulated_acc += acc[0] * current_num
-
-                current_step += 1
-
-            cumulated_acc /= n_test
-
-            print("After %d training step(s), prediction accuracy = %g, time cost = %f" %
-                  (local_step, cumulated_acc, time.time() - time_begin))
-
-            return cumulated_acc
-
         local_step = 0
-        best_valid_acc = 0.0
-        interval_cumulated_acc = 0.0
         while True:
-            batch_x, batch_y = generate_augment_train_batch(all_data, all_labels, FLAGS.batch_size)
-            train_feed = {x: batch_x, y_: batch_y, lr_placeholder: FLAGS.learning_rate}
+            # Training feed
+            batch_xs, batch_ys = mnist.train.next_batch(FLAGS.batch_size)
+            train_feed = {x: batch_xs, y_: batch_ys}
 
-            _, step, acc = sess.run([train_step, global_step, accuracy], feed_dict=train_feed)
-
-            interval_cumulated_acc += acc
+            _, step = sess.run([train_step, global_step], feed_dict=train_feed)
             local_step += 1
 
             now = time.time()
-            if local_step % FLAGS.log_interval == 0:
-                print("%f: Worker %d: Acc: %g training step %d done (global step: %d)" %
-                      (now, FLAGS.task_index, interval_cumulated_acc / FLAGS.log_interval, local_step, step))
-                interval_cumulated_acc = 0.0
-
-            if local_step % FLAGS.test_interval == 0:
-                best_valid_acc = max(best_valid_acc, valid(step))
-
-            # if local_step in [FLAGS.decay_step0, FLAGS.decay_step1]:
-            #     FLAGS.learning_rate *= FLAGS.lr_decay_factor
-            #     print("Step: %d, Learning Rate Decay: %g" % (local_step, FLAGS.learning_rate))
+            print("%f: Worker %d: training step %d done (global step: %d)" %
+                  (now, FLAGS.task_index, local_step, step))
 
             if step >= FLAGS.train_steps:
-                print(local_step)
-                print(step)
                 break
 
         time_end = time.time()
         print("Training ends @ %f" % time_end)
         training_time = time_end - time_begin
         print("Training elapsed time: %f s" % training_time)
-        print("Best Validation Acc: %g" % best_valid_acc)
+
+        # Validation feed
+        val_feed = {x: mnist.validation.images, y_: mnist.validation.labels}
+        val_xent = sess.run(cross_entropy, feed_dict=val_feed)
+        print("After %d training step(s), validation cross entropy = %g" %
+              (FLAGS.train_steps, val_xent))
 
 
 if __name__ == "__main__":
