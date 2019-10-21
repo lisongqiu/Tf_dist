@@ -8,7 +8,7 @@ idna==2.7
 jieba==0.39
 mock==2.0.0
 networkx==2.0
-nltk==3.2.5
+nltk==3.4.5
 numpy==1.13.3
 opencv-python==3.4.4.19
 Pattern==2.6
