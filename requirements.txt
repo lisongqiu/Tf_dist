@@ -19,7 +19,7 @@ requests==2.19.1
 scipy==1.0.0
 six==1.11.0
 summa==0.0.7
-tensorflow-gpu==1.0.1
+tensorflow-gpu==2.7.2
 tqdm==4.23.1
 urllib3==1.23
 urwid==2.0.1
